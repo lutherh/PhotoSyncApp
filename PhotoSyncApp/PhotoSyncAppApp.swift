@@ -7,6 +7,9 @@
 
 import SwiftUI
 
+// Legacy placeholder app entry removed to avoid multiple @main types.
+// Keeping this file for reference but it no longer participates in the build.
+#if false
 @main
 struct PhotoSyncAppApp: App {
     var body: some Scene {
@@ -15,3 +18,4 @@ struct PhotoSyncAppApp: App {
         }
     }
 }
+#endif

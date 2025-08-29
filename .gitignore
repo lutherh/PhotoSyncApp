@@ -1,0 +1,29 @@
+# macOS
+.DS_Store
+
+# Xcode
+DerivedData/
+build/
+*.xcuserstate
+PhotoSyncApp.xcodeproj/xcuserdata/
+PhotoSyncApp.xcodeproj/project.xcworkspace/xcuserdata/
+
+# SwiftPM
+.build/
+
+# Node (any location)
+node_modules/
+**/node_modules/
+
+# Environment files (keep templates)
+.env
+.env.*
+**/.env
+**/.env.*
+!**/.env.example
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+pnpm-debug.log*

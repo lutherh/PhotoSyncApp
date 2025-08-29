@@ -7,11 +7,11 @@
 	objects = {
 
 /* Begin PBXFileReference section */
-		5CD119DC2E61A7520082934C /* PhotoSyncApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoSyncApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5C0F0D762E61956000381273 /* PhotoSyncApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoSyncApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
-		5CD119DE2E61A7520082934C /* PhotoSyncApp */ = {
+		5C0F0D782E61956000381273 /* PhotoSyncApp */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
 			path = PhotoSyncApp;
 			sourceTree = "<group>";
@@ -19,7 +19,7 @@
 /* End PBXFileSystemSynchronizedRootGroup section */
 
 /* Begin PBXFrameworksBuildPhase section */
-		5CD119D92E61A7520082934C /* Frameworks */ = {
+		5C0F0D733E61956000381273 /* Frameworks */ = {
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -29,18 +29,18 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
-		5CD119D32E61A7520082934C = {
+		5C0F0D6D2E61956000381273 = {
 			isa = PBXGroup;
 			children = (
-				5CD119DE2E61A7520082934C /* PhotoSyncApp */,
-				5CD119DD2E61A7520082934C /* Products */,
+				5C0F0D782E61956000381273 /* PhotoSyncApp */,
+				5C0F0D772E61956000381273 /* Products */,
 			);
 			sourceTree = "<group>";
 		};
-		5CD119DD2E61A7520082934C /* Products */ = {
+		5C0F0D772E61956000381273 /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				5CD119DC2E61A7520082934C /* PhotoSyncApp.app */,
+				5C0F0D762E61956000381273 /* PhotoSyncApp.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -48,64 +48,64 @@
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
-		5CD119DB2E61A7520082934C /* PhotoSyncApp */ = {
+		5C0F0D752E61956000381273 /* PhotoSyncApp */ = {
 			isa = PBXNativeTarget;
-			buildConfigurationList = 5CD119E72E61A7530082934C /* Build configuration list for PBXNativeTarget "PhotoSyncApp" */;
+			buildConfigurationList = 5C0F0D812E61956300381273 /* Build configuration list for PBXNativeTarget "PhotoSyncApp" */;
 			buildPhases = (
-				5CD119D82E61A7520082934C /* Sources */,
-				5CD119D92E61A7520082934C /* Frameworks */,
-				5CD119DA2E61A7520082934C /* Resources */,
+				5C0F0D722E61956000381273 /* Sources */,
+				5C0F0D733E61956000381273 /* Frameworks */,
+				5C0F0D742E61956000381273 /* Resources */,
 			);
 			buildRules = (
 			);
 			dependencies = (
 			);
 			fileSystemSynchronizedGroups = (
-				5CD119DE2E61A7520082934C /* PhotoSyncApp */,
+				5C0F0D782E61956000381273 /* PhotoSyncApp */,
 			);
 			name = PhotoSyncApp;
 			packageProductDependencies = (
 			);
 			productName = PhotoSyncApp;
-			productReference = 5CD119DC2E61A7520082934C /* PhotoSyncApp.app */;
+			productReference = 5C0F0D762E61956000381273 /* PhotoSyncApp.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
 
 /* Begin PBXProject section */
-		5CD119D42E61A7520082934C /* Project object */ = {
+		5C0F0D6E2E61956000381273 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
 				BuildIndependentTargetsInParallel = 1;
 				LastSwiftUpdateCheck = 1640;
 				LastUpgradeCheck = 1640;
 				TargetAttributes = {
-					5CD119DB2E61A7520082934C = {
+					5C0F0D752E61956000381273 = {
 						CreatedOnToolsVersion = 16.4;
 					};
 				};
 			};
-			buildConfigurationList = 5CD119D72E61A7520082934C /* Build configuration list for PBXProject "PhotoSyncApp" */;
+			buildConfigurationList = 5C0F0D712E61956000381273 /* Build configuration list for PBXProject "PhotoSyncApp" */;
 			developmentRegion = en;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
 				Base,
 			);
-			mainGroup = 5CD119D32E61A7520082934C;
+			mainGroup = 5C0F0D6D2E61956000381273;
 			minimizedProjectReferenceProxies = 1;
 			preferredProjectObjectVersion = 77;
-			productRefGroup = 5CD119DD2E61A7520082934C /* Products */;
+			productRefGroup = 5C0F0D772E61956000381273 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
 			targets = (
-				5CD119DB2E61A7520082934C /* PhotoSyncApp */,
+				5C0F0D752E61956000381273 /* PhotoSyncApp */,
 			);
 		};
 /* End PBXProject section */
 
 /* Begin PBXResourcesBuildPhase section */
-		5CD119DA2E61A7520082934C /* Resources */ = {
+		5C0F0D742E61956000381273 /* Resources */ = {
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -115,7 +115,7 @@
 /* End PBXResourcesBuildPhase section */
 
 /* Begin PBXSourcesBuildPhase section */
-		5CD119D82E61A7520082934C /* Sources */ = {
+		5C0F0D722E61956000381273 /* Sources */ = {
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
@@ -125,7 +125,7 @@
 /* End PBXSourcesBuildPhase section */
 
 /* Begin XCBuildConfiguration section */
-		5CD119E52E61A7530082934C /* Debug */ = {
+		5C0F0D7F2E61956300381273 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -189,7 +189,7 @@
 			};
 			name = Debug;
 		};
-		5CD119E62E61A7530082934C /* Release */ = {
+		5C0F0D802E61956300381273 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
@@ -246,7 +246,7 @@
 			};
 			name = Release;
 		};
-		5CD119E82E61A7530082934C /* Debug */ = {
+		5C0F0D822E61956300381273 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -255,12 +255,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZUG493S447;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ProjectSupport/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -274,7 +270,7 @@
 			};
 			name = Debug;
 		};
-		5CD119E92E61A7530082934C /* Release */ = {
+		5C0F0D832E61956300381273 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
@@ -283,12 +279,8 @@
 				CURRENT_PROJECT_VERSION = 1;
 				DEVELOPMENT_TEAM = ZUG493S447;
 				ENABLE_PREVIEWS = YES;
-				GENERATE_INFOPLIST_FILE = YES;
-				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
-				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
-				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				GENERATE_INFOPLIST_FILE = NO;
+				INFOPLIST_FILE = ProjectSupport/Info.plist;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -305,25 +297,25 @@
 /* End XCBuildConfiguration section */
 
 /* Begin XCConfigurationList section */
-		5CD119D72E61A7520082934C /* Build configuration list for PBXProject "PhotoSyncApp" */ = {
+		5C0F0D712E61956000381273 /* Build configuration list for PBXProject "PhotoSyncApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5CD119E52E61A7530082934C /* Debug */,
-				5CD119E62E61A7530082934C /* Release */,
+				5C0F0D7F2E61956300381273 /* Debug */,
+				5C0F0D802E61956300381273 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
-		5CD119E72E61A7530082934C /* Build configuration list for PBXNativeTarget "PhotoSyncApp" */ = {
+		5C0F0D812E61956300381273 /* Build configuration list for PBXNativeTarget "PhotoSyncApp" */ = {
 			isa = XCConfigurationList;
 			buildConfigurations = (
-				5CD119E82E61A7530082934C /* Debug */,
-				5CD119E92E61A7530082934C /* Release */,
+				5C0F0D822E61956300381273 /* Debug */,
+				5C0F0D832E61956300381273 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
-	rootObject = 5CD119D42E61A7520082934C /* Project object */;
+	rootObject = 5C0F0D6E2E61956000381273 /* Project object */;
 }
