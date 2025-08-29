@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import { S3Client, PutObjectCommand } from "@aws-sdk/client-s3";
+import { S3Client, PutObjectCommand, HeadObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const app = express();
@@ -60,6 +60,27 @@ const redactUrl = (u) => {
 };
 
 app.get("/healthz", (_req, res) => res.json({ ok: true }));
+
+// GET /exists?key=<object-key>
+app.get("/exists", async (req, res) => {
+  try {
+    const { key } = req.query;
+    if (!key) return res.status(400).json({ error: "Missing key" });
+    console.log(`[exists] request key="${key}" bucket="${bucket}" region="${region}"`);
+    await s3.send(new HeadObjectCommand({ Bucket: bucket, Key: key }));
+    console.log(`[exists] key exists: ${key}`);
+    return res.json({ exists: true });
+  } catch (e) {
+    // NotFound -> does not exist; other errors -> report 500
+    const code = e?.$metadata?.httpStatusCode || e?.name || "";
+    if (code === 404 || e?.name === "NotFound" || e?.Code === "NotFound") {
+      console.log(`[exists] key not found: ${req.query.key}`);
+      return res.json({ exists: false });
+    }
+    console.error("[exists] error", e?.message || e);
+    return res.status(500).json({ error: "Exists check failed" });
+  }
+});
 
 // GET /presign?key=<object-key>&contentType=<mime>
 app.get("/presign", async (req, res) => {
