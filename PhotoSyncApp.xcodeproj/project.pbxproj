@@ -6,8 +6,13 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		5CD247092E61BB8B00880D04 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = 5CD247042E61BB8B00880D04 /* README.md */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		5C0F0D762E61956000381273 /* PhotoSyncApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = PhotoSyncApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		5CD247042E61BB8B00880D04 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -34,6 +39,7 @@
 			children = (
 				5C0F0D782E61956000381273 /* PhotoSyncApp */,
 				5C0F0D772E61956000381273 /* Products */,
+				5CD247042E61BB8B00880D04 /* README.md */,
 			);
 			sourceTree = "<group>";
 		};
@@ -109,6 +115,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5CD247092E61BB8B00880D04 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
