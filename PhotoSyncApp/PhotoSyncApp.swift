@@ -13,10 +13,7 @@ struct PhotoSyncApp: App {
                 .environmentObject(appState)
                 .onAppear {
                     logger.log("App WindowGroup appeared. hasPhotoAccess=\(self.appState.hasPhotoAccess, privacy: .public)")
-                    BackgroundScheduler.shared.registerTasks()
-                    logger.log("BGTasks registered")
-                    BackgroundScheduler.shared.scheduleRefresh()
-                    BackgroundScheduler.shared.scheduleProcessing()
+                    // BGTasks are now registered in AppDelegate.didFinishLaunching per Apple guidance
                 }
         }
     }
@@ -27,5 +24,8 @@ final class AppState: ObservableObject {
     @Published var hasPhotoAccess: Bool = PermissionsManager.currentAuthorizationIsFullAccess
     @Published var syncStatus: String = "Idle"
     @Published var lastSync: Date? = nil
+    // Live summary counters for current/last sync session
+    @Published var uploadedCount: Int = 0
+    @Published var existsCount: Int = 0
     private init() {}
 }

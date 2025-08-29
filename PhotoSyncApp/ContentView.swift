@@ -5,6 +5,7 @@ import os.log
 struct ContentView: View {
     @EnvironmentObject var appState: AppState
     private let logger = Logger.withBundleSubsystem(category: "UI")
+    @State private var latestUrls: [URL] = []
     
     var body: some View {
         NavigationView {
@@ -19,8 +20,50 @@ struct ContentView: View {
                 }
                 
                 GroupBox {
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Sync Status: \(appState.syncStatus)")
+                    VStack(alignment: .leading, spacing: 10) {
+                        Text("Sync Status")
+                            .font(.headline)
+                        if !latestUrls.isEmpty {
+                            ScrollView(.horizontal, showsIndicators: false) {
+                                HStack(spacing: 8) {
+                                    ForEach(Array(latestUrls.enumerated()), id: \.offset) { _, url in
+                                        AsyncImage(url: url) { phase in
+                                            switch phase {
+                                            case .empty:
+                                                ProgressView()
+                                                    .frame(width: 90, height: 90)
+                                            case .success(let image):
+                                                image.resizable().scaledToFill()
+                                                    .frame(width: 90, height: 90)
+                                                    .clipped()
+                                                    .cornerRadius(8)
+                                            case .failure:
+                                                Image(systemName: "photo")
+                                                    .frame(width: 90, height: 90)
+                                                    .background(Color.secondary.opacity(0.1))
+                                                    .cornerRadius(8)
+                                            @unknown default:
+                                                EmptyView()
+                                            }
+                                        }
+                                    }
+                                }
+                            }
+                            .frame(height: 100)
+                        }
+                        ScrollView {
+                            Text(appState.syncStatus)
+                                .frame(maxWidth: .infinity, alignment: .leading)
+                                .textSelection(.enabled)
+                                .padding(.vertical, 2)
+                        }
+                        .frame(maxHeight: 120)
+                        HStack(spacing: 12) {
+                            Label("Uploaded: \(appState.uploadedCount)", systemImage: "arrow.up.circle")
+                            Label("Exists: \(appState.existsCount)", systemImage: "checkmark.circle")
+                        }
+                        .font(.subheadline)
+                        .foregroundColor(.secondary)
                         if let last = appState.lastSync {
                             Text("Last Sync: \(last.formatted())")
                                 .font(.footnote)
@@ -44,9 +87,9 @@ struct ContentView: View {
                     .buttonStyle(.borderedProminent)
                 }
                 
-                Button("Sync Now") {
+        Button("Sync Now") {
                     Task {
-                        await PhotoSyncManager.shared.syncNewPhotos(trigger: .manual)
+            await PhotoSyncManager.shared.syncNewPhotos(trigger: .manual)
                     }
                 }
                 .buttonStyle(.borderedProminent)
@@ -76,6 +119,18 @@ struct ContentView: View {
                 if appState.hasPhotoAccess {
                     logger.log("Starting library observation")
                     PhotoSyncManager.shared.startObservingLibraryChanges()
+                }
+                Task { @MainActor in
+                    do {
+                        latestUrls = try await PresignAPI.shared.getLatest(limit: 3)
+                    } catch {
+                        logger.error("Failed loading latest images: \(error.localizedDescription)")
+                    }
+                }
+            }
+            .onChange(of: appState.lastSync) { _ in
+                Task { @MainActor in
+                    do { latestUrls = try await PresignAPI.shared.getLatest(limit: 3) } catch { }
                 }
             }
         }

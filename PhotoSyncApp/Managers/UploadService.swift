@@ -79,13 +79,10 @@ extension UploadService: URLSessionDelegate, URLSessionTaskDelegate {
             return
         }
         let code = (task.response as? HTTPURLResponse)?.statusCode ?? -1
-        if 200..<300 ~= code {
-            if let desc = task.taskDescription, let data = desc.data(using: .utf8),
-               let meta = try? JSONDecoder().decode(UploadTaskMetadata.self, from: data) {
-                UploadedIndexStore.shared.markUploaded(meta.assetLocalId)
-            }
+    if 200..<300 ~= code {
             Task { @MainActor in
                 AppState.shared.syncStatus = "Upload completed."
+        AppState.shared.uploadedCount += 1
             }
         } else {
             logger.error("Upload HTTP error: \(code)")

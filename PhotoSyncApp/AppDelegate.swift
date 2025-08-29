@@ -9,6 +9,12 @@ final class AppDelegate: NSObject, UIApplicationDelegate {
         // Prepare services early
         _ = UploadService.shared
         _ = PhotoSyncManager.shared
+    // Register BGTasks before finishing launch
+    BackgroundScheduler.shared.registerTasks()
+    logger.log("BGTasks registered in didFinishLaunching")
+    // Schedule tasks now so the system can refresh even if the app isn't opened again soon
+    BackgroundScheduler.shared.scheduleRefresh()
+    BackgroundScheduler.shared.scheduleProcessing()
         
         return true
     }
