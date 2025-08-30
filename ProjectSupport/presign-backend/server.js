@@ -1,10 +1,11 @@
 import "dotenv/config";
 import express from "express";
+import Bonjour from "bonjour-service";
 import { S3Client, PutObjectCommand, HeadObjectCommand, ListObjectsV2Command, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
 const app = express();
-const port = process.env.PORT || 3000;
+const port = process.env.PORT || 3498;
 const logFullUrls = process.env.DEBUG_LOG_URLS === "1" || process.env.DEBUG_LOG_URLS === "true";
 
 /*
@@ -190,5 +191,12 @@ app.listen(port, () => {
   console.log(`Region: ${region}  Endpoint: ${endpoint}  Bucket: ${bucket}`);
   if (!logFullUrls) {
     console.log("(URLs in logs are redacted; set DEBUG_LOG_URLS=1 to log full presigned URLs)");
+  }
+  try {
+    const bonjour = new Bonjour();
+    bonjour.publish({ name: "PhotoSync Presign", type: "photosync", port });
+    console.log("Bonjour service published: _photosync._tcp.local");
+  } catch (e) {
+    console.warn("Bonjour publish failed or not installed:", e?.message || e);
   }
 });

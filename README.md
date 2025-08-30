@@ -19,21 +19,23 @@ Nothing in the iOS app. Only the presign backend needs to sign URLs against the 
 1) Backend: run the presign server
 
 ```bash
-cd presign-backend
+cd ProjectSupport/presign-backend
 cp .env.example .env
 # edit .env and set AWS_ACCESS_KEY_ID / AWS_SECRET_ACCESS_KEY to your Scaleway S3 keys
 npm i
-npm start
-# server on http://localhost:3000
+PORT=3498 npm start
+# server on http://localhost:3498
 ```
 
-2) iOS app: set your Presign API base
+2) iOS app: Presign API base (manual or discovery)
 
-- Open `Configuration.plist` and set `PRESIGN_BASE_URL`, e.g.:
+- Optional manual override: set `PRESIGN_BASE_URL` in `Configuration.plist`, e.g.:
 
 ```
-PRESIGN_BASE_URL = https://your-api.example.com/
+PRESIGN_BASE_URL = http://<your-mac-ip>:3498
 ```
+
+- If unset, the app will try Bonjour discovery for `_photosync._tcp` on your LAN and use the discovered host:port.
 
 The app will call:
 
