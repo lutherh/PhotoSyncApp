@@ -3,7 +3,7 @@
 <plist version="1.0">
 <dict>
 	<key>PRESIGN_BASE_URL</key>
-	<string>http://192.168.0.187:3000</string>
+	<string>http://192.168.0.187:3498</string>
 	<key>S3_BUCKET</key>
 	<string>https://photosync.s3.nl-ams.scw.cloud</string>
 </dict>
