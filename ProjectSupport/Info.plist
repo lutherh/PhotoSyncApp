@@ -45,5 +45,20 @@
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).refresh</string>
 		<string>$(PRODUCT_BUNDLE_IDENTIFIER).processing</string>
 	</array>
+
+	<!-- Local network & Bonjour discovery for presign server -->
+	<key>NSLocalNetworkUsageDescription</key>
+	<string>This app discovers your local presign server over the local network.</string>
+	<key>NSBonjourServices</key>
+	<array>
+		<string>_photosync._tcp</string>
+	</array>
+
+	<!-- ATS: allow HTTP to local network hosts for presign discovery/use -->
+	<key>NSAppTransportSecurity</key>
+	<dict>
+		<key>NSAllowsArbitraryLoadsInLocalNetworking</key>
+		<true/>
+	</dict>
 </dict>
 </plist>

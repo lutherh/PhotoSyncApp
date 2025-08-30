@@ -13,8 +13,14 @@ final class PresignAPI {
     struct LatestResponse: Decodable { let items: [LatestItem] }
     
     func getPresignedPUT(key: String, contentType: String, created: Date? = nil, filename: String? = nil) async throws -> PresignedUpload {
-        guard let base = Config.shared.presignBaseURL else {
-            throw NSError(domain: "Config", code: 1, userInfo: [NSLocalizedDescriptionKey: "Presign base URL not configured"])
+        let base: URL?
+        if let manual = Config.shared.presignBaseURL {
+            base = manual
+        } else {
+            base = await BonjourDiscovery.shared.discoverPresignBaseURL()
+        }
+        guard let base else {
+            throw NSError(domain: "Config", code: 1, userInfo: [NSLocalizedDescriptionKey: "Presign base URL not configured and discovery failed"])
         }
         var comps = URLComponents(url: base.appendingPathComponent("presign"), resolvingAgainstBaseURL: false)!
         var items: [URLQueryItem] = [
@@ -42,8 +48,14 @@ final class PresignAPI {
     }
 
     func objectExists(key: String) async throws -> Bool {
-        guard let base = Config.shared.presignBaseURL else {
-            throw NSError(domain: "Config", code: 1, userInfo: [NSLocalizedDescriptionKey: "Presign base URL not configured"])
+        let base: URL?
+        if let manual = Config.shared.presignBaseURL {
+            base = manual
+        } else {
+            base = await BonjourDiscovery.shared.discoverPresignBaseURL()
+        }
+        guard let base else {
+            throw NSError(domain: "Config", code: 1, userInfo: [NSLocalizedDescriptionKey: "Presign base URL not configured and discovery failed"])
         }
         var comps = URLComponents(url: base.appendingPathComponent("exists"), resolvingAgainstBaseURL: false)!
         comps.queryItems = [ URLQueryItem(name: "key", value: key) ]
@@ -59,8 +71,14 @@ final class PresignAPI {
 
 extension PresignAPI {
     func getLatest(limit: Int = 3) async throws -> [URL] {
-        guard let base = Config.shared.presignBaseURL else {
-            throw NSError(domain: "Config", code: 1, userInfo: [NSLocalizedDescriptionKey: "Presign base URL not configured"])
+        let base: URL?
+        if let manual = Config.shared.presignBaseURL {
+            base = manual
+        } else {
+            base = await BonjourDiscovery.shared.discoverPresignBaseURL()
+        }
+        guard let base else {
+            throw NSError(domain: "Config", code: 1, userInfo: [NSLocalizedDescriptionKey: "Presign base URL not configured and discovery failed"])
         }
         var comps = URLComponents(url: base.appendingPathComponent("latest"), resolvingAgainstBaseURL: false)!
         comps.queryItems = [ URLQueryItem(name: "limit", value: String(limit)) ]
