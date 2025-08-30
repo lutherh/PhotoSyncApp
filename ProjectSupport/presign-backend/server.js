@@ -1,6 +1,6 @@
 import "dotenv/config";
 import express from "express";
-import Bonjour from "bonjour-service";
+import { createRequire } from "module";
 import { S3Client, PutObjectCommand, HeadObjectCommand, ListObjectsV2Command, GetObjectCommand } from "@aws-sdk/client-s3";
 import { getSignedUrl } from "@aws-sdk/s3-request-presigner";
 
@@ -192,11 +192,27 @@ app.listen(port, () => {
   if (!logFullUrls) {
     console.log("(URLs in logs are redacted; set DEBUG_LOG_URLS=1 to log full presigned URLs)");
   }
+  // Try to publish Bonjour/mDNS service using either bonjour-service or bonjour
   try {
-    const bonjour = new Bonjour();
-    bonjour.publish({ name: "PhotoSync Presign", type: "photosync", port });
-    console.log("Bonjour service published: _photosync._tcp.local");
+    const require = createRequire(import.meta.url);
+    let bonjourInstance = null;
+    try {
+      const BonjourCtor = require("bonjour-service");
+      bonjourInstance = new BonjourCtor();
+    } catch {}
+    if (!bonjourInstance) {
+      try {
+        const bonjourFn = require("bonjour");
+        bonjourInstance = bonjourFn();
+      } catch {}
+    }
+    if (bonjourInstance) {
+      bonjourInstance.publish({ name: "PhotoSync Presign", type: "photosync", port });
+      console.log("Bonjour service published: _photosync._tcp.local");
+    } else {
+      console.warn("Bonjour not installed. Run `npm i bonjour-service` or `npm i bonjour`.");
+    }
   } catch (e) {
-    console.warn("Bonjour publish failed or not installed:", e?.message || e);
+    console.warn("Bonjour publish failed:", e?.message || e);
   }
 });
